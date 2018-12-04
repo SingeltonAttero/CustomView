@@ -3,6 +3,7 @@ package com.yakov.weber.galleryview.mock
 object DataSourceUrl {
     private val listUrl:MutableList<String> = arrayListOf()
     fun getListUrl(): MutableList<String> {
+        listUrl.clear()
         listUrl.add("https://www.fly-phone.ru/upload/medialibrary/291217/FS530.jpg")
         listUrl.add("https://img.mvideo.ru/Pdb/30029885b.jpg")
         listUrl.add("https://my-chinese-phone.ru/wp-content/uploads/2018/03/honor-8-1-840x480.png")

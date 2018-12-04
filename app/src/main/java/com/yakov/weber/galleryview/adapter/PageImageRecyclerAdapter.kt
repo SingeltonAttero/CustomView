@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_page_adapter.view.*
  * @author YWeber
  * project GalleryView */
 
-class PageImageRecyclerAdapter(private val listUrlImage: List<String>, val clickItem: (Int, String) -> Unit) :
+class PageImageRecyclerAdapter(private val listUrlImage: List<String>,private val clickItem: (Int, String) -> Unit) :
     RecyclerView.Adapter<PageImageRecyclerAdapter.PageImageViewHolder>() {
 
     private var selectPos:Int = -1
@@ -24,20 +24,17 @@ class PageImageRecyclerAdapter(private val listUrlImage: List<String>, val click
         return PageImageViewHolder(view)
     }
 
-
-
     override fun getItemCount(): Int = listUrlImage.size
 
     override fun onBindViewHolder(holder: PageImageViewHolder, position: Int) {
         holder.bind(listUrlImage[position])
         holder.itemView.isSelected = selectPos == position
-        holder.itemView.setOnClickListener {
-            notifyItemChanged(selectPos)
-            selectPos = position
-            notifyItemChanged(position)
-            clickItem(position,listUrlImage[position])
-        }
+    }
 
+    fun getToPositionPager(position:Int){
+        notifyItemChanged(selectPos)
+        selectPos = position
+        notifyItemChanged(position)
     }
 
     inner class PageImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,6 +42,12 @@ class PageImageRecyclerAdapter(private val listUrlImage: List<String>, val click
             Glide.with(itemView.page_image_view.context)
                 .load(urlString)
                 .into(itemView.page_image_view)
+            itemView.setOnClickListener {
+                notifyItemChanged(selectPos)
+                selectPos = adapterPosition
+                notifyItemChanged(adapterPosition)
+                clickItem(position,listUrlImage[position])
+            }
         }
 
     }

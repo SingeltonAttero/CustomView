@@ -28,12 +28,12 @@ class GalleryView @JvmOverloads constructor(context: Context, attrs: AttributeSe
             gallery_pager.adapter = GalleryPagerAdapter(listUrl)
             gallery_pager.addOnPageChangeListener(this)
             page_recycler_view.adapter = PageImageRecyclerAdapter(listUrl)
-            { position, url ->  clickItemRecycler(url,position)}
+            { position ->  clickItemRecycler(position)}
             page_recycler_view.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         }
     }
 
-    private fun clickItemRecycler(url:String, position: Int){
+    private fun clickItemRecycler(position: Int){
             gallery_pager.currentItem = position
     }
 

@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.yakov.weber.galleryview.view.GalleryView
-            android:id="@+id/gallery_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
+    <com.yakov.weber.galleryview.view.SimpleCustomView
+            android:id="@+id/simple_view_circle"
+            android:layout_width="154dp"
+            android:layout_height="154dp"
+            app:dim="72dp"
+            app:shape="circle"
+            android:layout_gravity="center_horizontal"
     />
-</FrameLayout>
+
+    <com.yakov.weber.galleryview.view.SimpleCustomView
+            android:id="@+id/simple_view_square"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            app:dim="100dp"
+            app:shape="square"
+            android:layout_gravity="center_horizontal"
+    />
+</LinearLayout>

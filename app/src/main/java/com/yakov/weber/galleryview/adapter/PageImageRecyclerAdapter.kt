@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_page_adapter.view.*
  * @author YWeber
  * project GalleryView */
 
-class PageImageRecyclerAdapter(private val listUrlImage: List<String>,private val clickItem: (Int, String) -> Unit) :
+class PageImageRecyclerAdapter(private val listUrlImage: List<String>,private val clickItem: (Int) -> Unit) :
     RecyclerView.Adapter<PageImageRecyclerAdapter.PageImageViewHolder>() {
 
     private var selectPos:Int = -1
@@ -46,7 +46,7 @@ class PageImageRecyclerAdapter(private val listUrlImage: List<String>,private va
                 notifyItemChanged(selectPos)
                 selectPos = adapterPosition
                 notifyItemChanged(adapterPosition)
-                clickItem(position,listUrlImage[position])
+                clickItem(adapterPosition)
             }
         }
 
